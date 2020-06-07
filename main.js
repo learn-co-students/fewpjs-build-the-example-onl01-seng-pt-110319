@@ -9,29 +9,26 @@ function hideModal() {
 
 }
 
-hideModal();
-
 function likeBtn() {
   let emptyLike = document.querySelectorAll('.like-glyph')
   emptyLike.forEach(likeButtons => {
     likeButtons.addEventListener("click", function(event) {
-      mimicServerCall("fakeUrl", {article_id: this.parentNode.parentNode.parentNode.id
-      } ) //id="201811190"
+      mimicServerCall("fakeUrl", {article_id: this.parentNode.parentNode.parentNode.parentNode.id 
+      } )
       .then(function(response){
-        console.log(response)
-      goodStatus(likeButtons);
-      // console.log(response)
+      goodStatus(response);
       })
       .catch(function(error) {
-        console.log(error)
         badStatus(error);
       })
     })
   })
 }
-likeBtn();
 
-function goodStatus(heart) {
+function goodStatus(response) {
+  let article = document.querySelector("[id='"+ response.article_id + "']")
+  let heart = article.querySelector('.like-glyph') 
+  console.log(response)
   console.log(heart)
 
   if (heart.innerText === EMPTY_HEART) {
@@ -42,14 +39,6 @@ function goodStatus(heart) {
     heart.innerText = EMPTY_HEART
   }
 
-  // let article = document.querySelector("[id='"+ response.article_id + "']")
-  // console.log(article)
-  
-  // let likeBtn = article.querySelector('.like-glyph') // searches for a class
-  // // likeBtn.classList.remove('like')
-  // likeBtn.classList.add('activated-heart')
-  // likeBtn.innerText = FULL_HEART
-
 }
 
 function badStatus(error) {
@@ -59,9 +48,14 @@ function badStatus(error) {
 
     setTimeout(function() {
       hidden.classList.add("hidden");
-
     }, 5000)
   }
+  
+
+  document.addEventListener("DOMContentLoaded", event => {
+  likeBtn();
+  hideModal();
+})
 
 
   // function addConfetti() {
@@ -76,7 +70,9 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
     setTimeout(function() {
       let isRandomFailure = Math.random() < .2
       if (isRandomFailure) {
-        reject(config);
+     reject("Random server error. Try again.");
+
+        // reject(config);
       } else {
         resolve(config);
       }
