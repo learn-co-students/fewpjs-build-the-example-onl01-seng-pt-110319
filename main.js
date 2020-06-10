@@ -24,18 +24,23 @@ function modalChange () {
 
 function heart() {
   jsLike.addEventListener("click", function() {
+    jsLike.style.color = "red"
     jsLike.innerHTML = "Like!" + " " + FULL_HEART
   })
   rubyLike.addEventListener("click", function() {
+    rubyLike.style.color = "red"
     rubyLike.innerHTML = "Like!" + " " + FULL_HEART
   })
   pythonLike.addEventListener("click", function() {
+    pythonLike.style.color = "red"
     pythonLike.innerHTML = "Like!" + " " + FULL_HEART
   })
   javaLike.addEventListener("click", function() {
+    javaLike.style.color = "red"
     javaLike.innerHTML = "Like!" + " " + FULL_HEART
   })
   elixrLike.addEventListener("click", function() {
+    elixrLike.style.color = "red"
     elixrLike.innerHTML = "Like!" + " " + FULL_HEART
   })
 }
