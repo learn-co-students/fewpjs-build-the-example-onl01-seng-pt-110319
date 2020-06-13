@@ -1,4 +1,4 @@
-// let error = document.querySelector("#modal").className = "hidden"
+let error = document.querySelector("#modal").className = "hidden"
 
 document.addEventListener("DOMContentLoaded", event => {
   likeBtnCallback();
@@ -29,7 +29,7 @@ const likeBtnCallback = () => {
     .catch(error => {
       let modal = document.getElementById("modal").className = "";
       modal.innerText = error.message;
-      modal.className = "hidden";
+      setTimeout = modal.className = "hidden", 5000;
     })
     })
   )
