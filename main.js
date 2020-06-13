@@ -12,11 +12,6 @@ let heartStates = {
   '♥': '♡'
 };
 
-// let heartColors = {
-//   "red": "",
-//   "": "red"
-// };
-
 const likeBtnCallback = () => {
   let hearts = document.querySelectorAll(".like-glyph");
   hearts.forEach(heart => 
