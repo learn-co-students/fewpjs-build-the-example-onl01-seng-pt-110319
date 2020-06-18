@@ -10,7 +10,7 @@
   
     let allHearts = document.querySelectorAll("span.like-glyph");
     for (let likeGlyph of allHearts) {
-      likeGlyph.addEventListener("click",   function likeHeart(event) {
+      likeGlyph.addEventListener("click", function likeHeart(event) {
         let oneHeart = event.target;
         mimicServerCall()
         .then(() => {
@@ -23,7 +23,7 @@
           let showErr = document.getElementById("modal").className="modal"
           toggleErr(showErr);
         })// USE? timeout -  window.setTimeout(window.alert, 5*1000
-      }
+      })
     }
     
 
