@@ -1,8 +1,34 @@
-// Defining text characters for the empty and full hearts for you to use later.
+let error = document.querySelector("#modal").className = "hidden"
+
+document.addEventListener("DOMContentLoaded", event => {
+  likeBtnCallback();
+})
+
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Your JavaScript code goes here!
+let heartStates = {
+  '♡': '♥',
+  '♥': '♡'
+};
+
+const likeBtnCallback = () => {
+  let hearts = document.querySelectorAll(".like-glyph");
+  hearts.forEach(heart => 
+    heart.addEventListener("click", (e) => {
+      mimicServerCall("url")
+      .then(res => {
+        heart.classList.add("activated-heart");
+        heart.innerText = heartStates[heart.innerText];
+      })
+    .catch(error => {
+      let modal = document.getElementById("modal").className = "";
+      modal.innerText = error.message;
+      setTimeout = modal.className = "hidden", 5000;
+    })
+    })
+  )
+};
 
 
 
