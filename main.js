@@ -4,6 +4,40 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+let hearts = {
+  "♡": "♥",
+  "♥": "♡"
+}
+
+let colors = {
+  "red" : "",
+  "": "red"
+}
+
+function likeCall(e) {
+  let heart = e.target;
+  mimicServerCall("fakeURL")
+  .then(function(serverMessage){
+    heart.style.color = colors[heart.style.color];
+    if(heart.className==="like-glyph") {
+      heart.innerText = hearts[heart.innerText];
+    }
+  })
+  .catch(function(error){
+    alert("No Server");
+    document.getElementById("modal").className = "";
+  });
+}
+
+document.addEventListener('click', function(e) {
+  if(e.target.className==="like-glyph") {
+    likeCall(e);
+  } 
+  if(e.target.className==="like") {
+    likeCall(e);
+  } 
+})
+
 
 
 
