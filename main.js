@@ -1,38 +1,37 @@
 // Defining text characters for the empty and full hearts for you to use later.
-const EMPTY_HEART = '♡'
-const FULL_HEART = '♥'
+let glyphStates = {
+  "♡": "♥",
+  "♥": "♡"
+};
+
+let colorStates = {
+  "red" : "",
+  "": "red"
+};
+
 const modal=document.querySelector("#modal")
 modal.setAttribute("class","hidden")
 
 
 // Your JavaScript code goes here!
-let likes=document.getElementsByClassName("like-glyph");
-function updateLike(){
-like.addEventListener("click", function(){
-    if (like.innerHTML===FULL_HEART){
-        fullHeart(like)
-        console.log("working?")
-    }
-    else{
-      console.log("help")
-      emptyHeart(like)
+let articleHearts = document.querySelectorAll(".like");
 
-      .catch((error)=>{
-        modal.removeAttribute("class","hidden")
-      })
-    }
+function likeCallback(e) {
+  let heart=e.target;
+  mimicServerCall()
+  .then(function(serverMessage){
+    alert("You notified the server!");
+    alert(serverMessage);
+    heart.innerText=glyphStates[heart.innerText];
+    heart.style.color = colorStates[heart.style.color];
   })
+   .catch(function(error){
+     alert("Something went wrong!");
+   }); 
 }
 
-
-function emptyHeart(like){
-like.innerHTML=EMPTY_HEART;
-like.setAttribute("class","activated-heart");
-}
-
-function fullHeart(like){
-like.innerHTML=FULL_HEART;
-like.classList.remove("activated-heart");
+for (let glyph of articleHearts) {
+  glyph.addEventListener("click", likeCallback);
 }
 
 
