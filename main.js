@@ -1,13 +1,13 @@
 // Defining text characters for the empty and full hearts for you to use later.
-let glyphStates = {
-  "♡": "♥",
-  "♥": "♡"
-};
+// let glyphStates = {
+//   "♡": "♥",
+//   "♥": "♡"
+// };
 
-let colorStates = {
-  "red" : "",
-  "": "red"
-};
+// let colorStates = {
+//   "red" : "",
+//   "": "red"
+// };
 
 const modal=document.querySelector("#modal")
 modal.setAttribute("class","hidden")
